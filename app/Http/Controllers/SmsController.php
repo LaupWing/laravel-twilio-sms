@@ -71,11 +71,12 @@ class SmsController extends Controller
         $twilio_number = getenv("TWILIO_NUMBER");
         $client = new Client($account_sid, $auth_token);
         $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message]);
+        dd($recipients);
     }
 
     public function send(Request $request) {
-        dd($request->phone_number);
         if($request->has("phone_number")){
+            $this->sendMessage("Zwarte koffie is beter", $request->phone_number);
             return response()->json([
                 "message" => "It works"
             ]);
