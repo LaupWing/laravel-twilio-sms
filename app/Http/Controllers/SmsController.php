@@ -62,4 +62,10 @@ class SmsController extends Controller
     {
         //
     }
+
+    public function send(Request $request) {
+        return response()->json([
+            "test" => " test"
+        ]);
+    }
 }
