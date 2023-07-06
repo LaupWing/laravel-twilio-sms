@@ -74,14 +74,14 @@ class SmsController extends Controller
     }
 
     public function send(Request $request) {
-
+        dd($request->phone_number);
         if($request->has("phone_number")){
             return response()->json([
                 "message" => "It works"
             ]);
         }
         return response()->json([
-            "success" => "It works"
+            "error" => "Please provide an phonenumber"
         ]);
     }
 }
