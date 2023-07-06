@@ -8,11 +8,11 @@ use Twilio\Rest\Client;
 
 class SmsController extends Controller
 {
-    private function sendMessage($message, $recipients)
+    private function sendMessage($message, $recipients, $countryCode)
     {
         $account_sid = getenv("TWILIO_SID");
         $auth_token = getenv("TWILIO_AUTH_TOKEN");
-        $twilio_number = getenv("TWILIO_NUMBER");
+        $twilio_number = getenv("TWILIO_NUMBER_{$countryCode}");
         $client = new Client($account_sid, $auth_token);
         $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message]);
         dd($recipients);
